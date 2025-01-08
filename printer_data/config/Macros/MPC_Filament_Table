@@ -1,4 +1,4 @@
-[gcode_macro MPC_SET_MATERIAL]
+[gcode_macro _SET_MPC_MATERIAL]
 description: Set heater MPC parameters for a given material
 variable_filament_table:
     ## Update this table to adjust material settings
@@ -27,7 +27,7 @@ gcode:
     {% set material = params.MATERIAL | upper %}
     {% set heater = params.HEATER | default('extruder') %}
     {% set extruder_config = printer.configfile.settings[heater] %}
-        
+
     {% if material in filament_table %}
         {% set (density, heat_capacity) = filament_table[material] %}
 
